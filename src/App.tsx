@@ -1,12 +1,23 @@
 import React from 'react';
+import st from './App.module.css';
 import Header from './components/Header';
-// import './App.module.css';
+import Main from './components/Main';
+import Footer from './components/Footer';
+import { Switch, Route, BrowserRouter, Redirect } from 'react-router-dom';
 
 function App() {
   return (
-    <div className="App">
-      <Header />
-    </div>
+    <BrowserRouter>
+      <div className={st.App}>
+        <Header />
+        <Switch>
+          <Route path="/profile" component={Main} />
+          <Route path="/messages" component={Main} />
+          <Redirect from="/" to="/profile" />
+        </Switch>
+        <Footer />
+      </div>
+    </BrowserRouter>
   );
 }
 
