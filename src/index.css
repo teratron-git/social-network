@@ -20,3 +20,11 @@ body {
 	-moz-osx-font-smoothing: grayscale;
 	box-sizing: border-box;
 }
+
+#root {
+		display: grid;
+		justify-content: center;
+		justify-items: stretch;
+		align-items: stretch;
+		height: 100vh;
+}
