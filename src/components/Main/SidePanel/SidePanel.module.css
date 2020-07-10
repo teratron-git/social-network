@@ -1,0 +1,12 @@
+.mainContainer {
+  background-color: #777;
+  padding: 10px;
+}
+
+.item{
+  color: #777;
+}
+
+.activeLink {
+  color: red;
+}
