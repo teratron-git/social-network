@@ -1,6 +1,8 @@
-import React from 'react';
-import st from './Footer.module.css';
+import React from 'react'
+import st from './Footer.module.css'
 
-export default function Footer() {
-  return <footer className={st.mainContainer}>FOOTER</footer>;
+const Footer: React.FC = () => {
+  return <footer className={st.mainContainer}>FOOTER</footer>
 }
+
+export default Footer

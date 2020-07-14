@@ -1,8 +1,8 @@
-import React from 'react';
-import st from './SidePanel.module.css';
-import { NavLink } from 'react-router-dom';
+import React from 'react'
+import st from './SidePanel.module.css'
+import { NavLink } from 'react-router-dom'
 
-export default function SidePanel() {
+const SidePanel: React.FC = () => {
   return (
     <nav className={st.mainContainer}>
       <div className={st.item}>
@@ -31,5 +31,7 @@ export default function SidePanel() {
         </NavLink>
       </div>
     </nav>
-  );
+  )
 }
+
+export default SidePanel

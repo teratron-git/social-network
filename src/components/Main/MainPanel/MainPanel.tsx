@@ -1,11 +1,12 @@
-import React from 'react';
-import st from './MainPanel.module.css';
-import { NavLink } from 'react-router-dom';
+import React from 'react'
+import st from './MainPanel.module.css'
 
-export default function MainPanel() {
+const MainPanel: React.FC = () => {
   return (
     <section id="content" className={st.mainContainer}>
       MAINPANEL
     </section>
-  );
+  )
 }
+
+export default MainPanel

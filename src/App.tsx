@@ -1,11 +1,11 @@
-import React from 'react';
-import st from './App.module.css';
-import Header from './components/Header';
-import Main from './components/Main';
-import Footer from './components/Footer';
-import { Switch, Route, BrowserRouter, Redirect } from 'react-router-dom';
+import React from 'react'
+import st from './App.module.css'
+import Header from './components/Header'
+import Main from './components/Main'
+import Footer from './components/Footer'
+import { Switch, Route, BrowserRouter, Redirect } from 'react-router-dom'
 
-function App() {
+const App: React.FC = () => {
   return (
     <BrowserRouter>
       <div className={st.App}>
@@ -18,7 +18,7 @@ function App() {
         <Footer />
       </div>
     </BrowserRouter>
-  );
+  )
 }
 
-export default App;
+export default App
