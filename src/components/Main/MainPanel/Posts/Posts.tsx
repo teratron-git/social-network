@@ -14,16 +14,13 @@ let postsDb: Object[] = []
 const Posts: React.FC = (props: any) => {
   console.log('Posts -> props', props)
 
-  const [name, setName] = useState('')
+  const [name, setName] = useState('Иван')
   const [message, setMessage] = useState('')
 
   const submitHandler = (e: any) => {
     e.preventDefault()
-    addPost({ name: '1', message: '2' })
-    postsDb.push({
-      name: name,
-      message: message,
-    })
+    props.addPost({ name, message })
+    postsDb.push({ name, message })
     setMessage('')
     console.log('отправлено', message)
     console.log('postsDb', postsDb)
@@ -61,7 +58,7 @@ export const mapStateToProps = (state) => {
   }
 }
 
-export const mapDispatchToProps = (dispatch): any => {
+export const mapDispatchToProps = (dispatch: any): any => {
   return {
     addPost: bindActionCreators(addPost, dispatch),
   }
