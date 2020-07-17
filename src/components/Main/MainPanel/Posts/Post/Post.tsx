@@ -3,8 +3,8 @@ import st from './Post.module.css'
 
 interface IProps {
   data: {
-    name: string,
-    message: string,
+    curId: string,
+    curPost: string,
   };
 }
 
@@ -17,8 +17,8 @@ const Post = (props: IProps) => {
   return (
     <>
       <div className={st.mainContainer}>
-        Имя: {props.data.name}
-        Пост: {props.data.message}
+        Имя: {props.data.curId}
+        Пост: {props.data.curPost}
       </div>
     </>
   )

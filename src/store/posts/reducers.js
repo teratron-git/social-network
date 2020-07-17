@@ -1,12 +1,13 @@
 import { actions } from './actions'
 
-let { addPost } = actions
+let { addPost, getPosts } = actions
 
 const sData = JSON.parse(localStorage.getItem('test')) || { test: 'test' }
 
 const initialState = {
-  name: 'Сергей',
-  message: 'Тестовое сообщение',
+  curId: '',
+  curPost: '',
+  allPosts: [],
 }
 
 export const postsReducer = (state = initialState, action) => {
@@ -18,8 +19,17 @@ export const postsReducer = (state = initialState, action) => {
 
       return {
         ...state,
-        name: action.payload.name,
-        message: action.payload.message,
+        curId: action.payload.curId,
+        curPost: action.payload.curPost,
+        allPosts: action.payload.allPosts,
+      }
+
+    case getPosts.toString():
+      console.log('!!!!!!!!! getPosts')
+      localStorage.setItem('test', JSON.stringify({ test: 'test' }))
+
+      return {
+        ...state,
       }
 
     default:

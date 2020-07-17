@@ -5,30 +5,34 @@ import Post from './Post'
 import st from './Posts.module.css'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import { getName, getPost } from '../../../../store/posts/selectors'
+import { getCurId, getCurPost, getAllPosts } from '../../../../store/posts/selectors'
 import { actions } from '../../../../store/posts/actions'
 
-let { addPost } = actions
-let postsDb: Object[] = []
+let { addPost, getPosts } = actions
 
 const Posts: React.FC = (props: any) => {
   console.log('Posts -> props', props)
 
-  const [name, setName] = useState('Иван')
-  const [message, setMessage] = useState('')
+  const [curId, setCurId] = useState('')
+  const [curPost, setCurPost] = useState('')
+  const [allPosts, setAllPosts] = useState([])
 
   const submitHandler = (e: any) => {
     e.preventDefault()
-    props.addPost({ name, message })
-    postsDb.push({ name, message })
-    setMessage('')
-    console.log('отправлено', message)
-    console.log('postsDb', postsDb)
-    // getFullState()
+    props.getPosts()
+    let id = new Date().getTime()
+    setCurId(`${id}`)
+    props.addPost({ curId: id, curPost })
+    const posts = [...allPosts]
+    posts.push({ curId, curPost })
+    setAllPosts(posts)
+    setCurPost('')
+    console.log('отправлено', curId, curPost)
+    console.log('allPosts', allPosts)
   }
 
   const postChangeHandler = (e: any) => {
-    setMessage(e.target.value)
+    setCurPost(e.target.value)
     console.log('Пост изменен', e.target.value)
   }
 
@@ -37,11 +41,11 @@ const Posts: React.FC = (props: any) => {
       <div className={st.mainContainer}>
         Posts
         <form onSubmit={submitHandler}>
-          <TextField value={message} onChange={postChangeHandler} />
+          <TextField value={curPost} onChange={postChangeHandler} />
           <Button variant="contained" color="secondary" type="submit">
             Запостить
           </Button>
-          {postsDb.map((item: any) => {
+          {allPosts.map((item: any) => {
             return <Post key={item} data={item} />
           })}
         </form>
@@ -50,17 +54,18 @@ const Posts: React.FC = (props: any) => {
   )
 }
 
-export const mapStateToProps = (state) => {
+export const mapStateToProps = (state: any) => {
   return {
-    name: getName(state),
-    message: getPost(state),
-    // getFullState: getState(state),
+    curId: getCurId(state),
+    curPost: getCurPost(state),
+    allPosts: getAllPosts(state),
   }
 }
 
-export const mapDispatchToProps = (dispatch: any): any => {
+export const mapDispatchToProps = (dispatch: any) => {
   return {
     addPost: bindActionCreators(addPost, dispatch),
+    getPosts: bindActionCreators(getPosts, dispatch),
   }
 }
 

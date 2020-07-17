@@ -1,3 +1,3 @@
-export const getName = (state) => state.post.name
-export const getPost = (state) => state.post.message
-export const getState = (state) => state
+export const getCurId = (state) => state.posts.curId
+export const getCurPost = (state) => state.posts.curPost
+export const getAllPosts = (state) => state.posts.allPosts
