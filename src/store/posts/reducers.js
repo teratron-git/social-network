@@ -3,6 +3,7 @@ import { actions } from './actions'
 let { addPost, getPosts } = actions
 
 const sData = JSON.parse(localStorage.getItem('test')) || { test: 'test' }
+const tempArr = []
 
 const initialState = {
   curId: '',
@@ -15,13 +16,20 @@ export const postsReducer = (state = initialState, action) => {
   switch (action.type) {
     case addPost.toString():
       console.log('!!!!!!!!! addPost')
-      localStorage.setItem('test', JSON.stringify({ test: 'test' }))
+      console.log('!!!!!!!!! action', action)
 
+      localStorage.setItem('test', JSON.stringify({ test: 'test' }))
+      const id = new Date().getTime().toString()
+      tempArr.push({
+        curId: id,
+        curPost: action.payload.curPost,
+      })
+      console.log('postsReducer -> tempArr', tempArr)
       return {
         ...state,
-        curId: action.payload.curId,
+        curId: id,
         curPost: action.payload.curPost,
-        allPosts: action.payload.allPosts,
+        allPosts: tempArr,
       }
 
     case getPosts.toString():
