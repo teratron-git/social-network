@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import TextField from '@material-ui/core/TextField'
 import Button from '@material-ui/core/Button'
 import Post from './Post'
@@ -15,20 +15,12 @@ const Posts: React.FC = (props: any) => {
 
   const [curId, setCurId] = useState('')
   const [curPost, setCurPost] = useState('')
-  const [allPosts, setAllPosts] = useState([])
 
   const submitHandler = (e: any) => {
     e.preventDefault()
-    props.getPosts()
-    let id = new Date().getTime()
-    setCurId(`${id}`)
-    props.addPost({ curId: id, curPost })
-    const posts = [...allPosts]
-    posts.push({ curId, curPost })
-    setAllPosts(posts)
+    props.addPost({ curPost })
+    console.log('отправлено', curPost)
     setCurPost('')
-    console.log('отправлено', curId, curPost)
-    console.log('allPosts', allPosts)
   }
 
   const postChangeHandler = (e: any) => {
@@ -42,12 +34,21 @@ const Posts: React.FC = (props: any) => {
         Posts
         <form onSubmit={submitHandler}>
           <TextField value={curPost} onChange={postChangeHandler} />
-          <Button variant="contained" color="secondary" type="submit">
+          <Button
+            variant="contained"
+            color="secondary"
+            disabled={Boolean(!curPost)}
+            type="submit"
+          >
             Запостить
           </Button>
-          {allPosts.map((item: any) => {
-            return <Post key={item} data={item} />
-          })}
+          {props.allPosts.length ? (
+            props.allPosts.map((item: any) => {
+              return <Post key={item.curId} data={{ ...item, isEmpty: false }} />
+            })
+          ) : (
+            <Post data={{ curId: '', curPost: '', isEmpty: true }} />
+          )}
         </form>
       </div>
     </>

@@ -3,23 +3,25 @@ import st from './Post.module.css'
 
 interface IProps {
   data: {
-    curId: string,
-    curPost: string,
+    curId?: string,
+    curPost?: string,
+    isEmpty?: boolean,
   };
 }
 
 const Post = (props: IProps) => {
   console.log('Post -> props', props)
 
-  // const [name, setName] = useState('')
-  // const [post, setPost] = useState('')
-
   return (
     <>
-      <div className={st.mainContainer}>
-        Имя: {props.data.curId}
-        Пост: {props.data.curPost}
-      </div>
+      {!props.data.isEmpty ? (
+        <div className={st.mainContainer}>
+          Id: {props.data.curId}
+          Пост: {props.data.curPost}
+        </div>
+      ) : (
+        <div className={st.mainContainer}>Пока сообщений нет...</div>
+      )}
     </>
   )
 }
