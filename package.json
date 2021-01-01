@@ -24,7 +24,7 @@
     "react-scripts": "^4.0.1",
     "redux": "^4.0.5",
     "redux-actions": "^2.6.5",
-    "typescript": "^4.0.5"
+    "typescript": "^4.1.3"
   },
   "devDependencies": {
     "cz-customizable": "^6.3.0",
