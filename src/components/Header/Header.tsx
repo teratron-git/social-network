@@ -1,7 +1,7 @@
-import React from 'react'
+import { FC } from 'react';
 import st from './Header.module.css'
 
-const Header: React.FC = () => {
+const Header: FC = () => {
   return <header className={st.mainContainer}>HEADER</header>
 }
 

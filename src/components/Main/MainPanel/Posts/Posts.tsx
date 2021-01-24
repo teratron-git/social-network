@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import { useState, useEffect, FC } from 'react';
 import TextField from '@material-ui/core/TextField'
 import Button from '@material-ui/core/Button'
 import Post from './Post'
@@ -10,7 +10,7 @@ import { actions } from '../../../../store/posts/actions'
 
 let { addPost, getPosts } = actions
 
-const Posts: React.FC = (props: any) => {
+const Posts: FC = (props: any) => {
   console.log('Posts -> props', props)
 
   const [curId, setCurId] = useState('')

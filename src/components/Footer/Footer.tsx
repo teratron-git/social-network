@@ -1,7 +1,7 @@
-import React from 'react'
+import { FC } from 'react';
 import st from './Footer.module.css'
 
-const Footer: React.FC = () => {
+const Footer: FC = () => {
   return <footer className={st.mainContainer}>FOOTER</footer>
 }
 

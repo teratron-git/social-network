@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react';
 import st from './Post.module.css'
 
 interface IProps {

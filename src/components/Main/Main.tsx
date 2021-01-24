@@ -1,9 +1,9 @@
-import React from 'react'
+import { FC } from 'react';
 import SidePanel from './SidePanel'
 import MainPanel from './MainPanel'
 import st from './Main.module.css'
 
-const Main: React.FC = () => {
+const Main: FC = () => {
   return (
     <div className={st.mainContainer}>
       <SidePanel />

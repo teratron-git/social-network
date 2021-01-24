@@ -1,8 +1,8 @@
-import React from 'react'
+import { FC } from 'react';
 import st from './MainPanel.module.css'
 import Posts from './Posts'
 
-const MainPanel: React.FC = () => {
+const MainPanel: FC = () => {
   return (
     <section id="content" className={st.mainContainer}>
       MAINPANEL

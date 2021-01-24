@@ -1,8 +1,8 @@
-import React from 'react'
+import { FC } from 'react';
 import st from './SidePanel.module.css'
 import { NavLink } from 'react-router-dom'
 
-const SidePanel: React.FC = () => {
+const SidePanel: FC = () => {
   return (
     <nav className={st.mainContainer}>
       <div className={st.item}>
